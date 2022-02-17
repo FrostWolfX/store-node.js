@@ -1,4 +1,4 @@
-/server/node_modules/*
-/server/.env
-/test/*
-/static/*
+server/node_modules
+server/.env
+test
+static
