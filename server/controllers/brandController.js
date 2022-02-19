@@ -3,14 +3,22 @@ const ApiError = require('../errors/ApiError');
 
 class BrandController {
     async create(request, response) {
-        const { name } = request.body;
-        const brand = await Brand.create({ name });
-        return response.json(brand);
+        try {
+            const { name } = request.body;
+            const brand = await Brand.create({ name });
+            return response.json(brand);
+        } catch (error) {
+            next(ApiError.badRequest(error.message));
+        }
     }
 
     async getAll(request, response) {
-        const brands = await Brand.findAll();
-        return response.json(brands);
+        try {
+            const brands = await Brand.findAll();
+            return response.json(brands);
+        } catch (error) {
+            next(ApiError.badRequest(error.message));
+        }
     }
 }
 
